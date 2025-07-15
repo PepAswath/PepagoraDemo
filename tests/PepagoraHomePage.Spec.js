@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test('test', async ({ page }) => {
 
-  await page.goto('https://staging.pepagora.com/');
+  await page.goto('https://staging.pepagora.com/',{ waitUntil: 'load' });
 
   await page.getByRole('button', { name: '×' }).click();
 
@@ -12,13 +12,11 @@ test('test', async ({ page }) => {
 
   await page.locator('#product_name').fill('Tyre');
 
-  await page.getByRole('link', { name: 'Select Category' }).click();
-
-  await page.getByRole('textbox', { name: 'Search Categories' }).click();
+  await page.locator("//a[@class='selCatPL']").click();
 
   await page.getByRole('textbox', { name: 'Search Categories' }).fill('Tyre');
 
-  await page.getByRole('button', { name: 'Search' }).click();
+  await page.getByRole('button', { name: 'Search' }).click("Search Categories");
 
   await page.getByText('Rubber & Plastics >> Rubber').click();
 
@@ -43,5 +41,5 @@ test('test', async ({ page }) => {
   await page.locator('input[name="prd_email_id"]').fill('pepagoraalphaqa@gmail.com');
   
   await page.getByRole('link', { name: 'Submit' }).click();
-  
+
 });
