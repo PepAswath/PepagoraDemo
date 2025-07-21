@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test('test', async ({ page }) => {
 
-  await page.goto('https://staging.pepagora.com/',{ waitUntil: 'load' });
+  await page.goto('https://staging.pepagora.com/',{ waitUntil: 'domcontentloaded' });
 
   await page.getByRole('button', { name: '×' }).click();
 
@@ -28,7 +28,7 @@ test('test', async ({ page }) => {
 
   await page.getByRole('textbox', { name: 'Date' }).click();
 
-  await page.getByRole('link', { name: '15', exact: true }).click();
+  await page.getByRole('link', { name: '25', exact: true }).click();
 
   await page.locator('input[name="prd_first_name"]').click();
 
