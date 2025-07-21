@@ -12,9 +12,13 @@ test('test', async ({ page }) => {
 
   await page.locator('#product_name').fill('Tyre');
 
-  await page.locator("//a[@class='selCatPL']").click();
+  const searchBox = page.getByRole('textbox', { name: 'Search Categories' });
 
-  await page.getByRole('textbox', { name: 'Search Categories' }).fill('Tyre');
+  await expect(searchBox).toBeVisible({ timeout: 60000 }); // Wait with assertion
+
+  await searchBox.click();
+
+  await searchBox.fill('Tyre');
 
   await page.getByText('Rubber & Plastics >> Rubber').click();
 

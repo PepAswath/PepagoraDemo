@@ -27,6 +27,8 @@ jobs:
         run: npx playwright test
 
       - name: ☁️ Upload HTML Report to S3
+        if: always()
+      
         uses: jakejarvis/s3-sync-action@v0.5.1
         with:
           args: --acl public-read --delete
