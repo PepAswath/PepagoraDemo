@@ -16,8 +16,6 @@ test('test', async ({ page }) => {
 
   await page.getByRole('textbox', { name: 'Search Categories' }).fill('Tyre');
 
-  await page.getByRole('button', { name: 'Search' }).click("Search Categories");
-
   await page.getByText('Rubber & Plastics >> Rubber').click();
 
   await page.getByRole('button', { name: 'OK' }).click();
