@@ -4,7 +4,7 @@ import { defineConfig } from '@playwright/test';
 
 test('test', async ({ page }) => {
 
-  await page.goto('https://staging.pepagora.com/');
+  await page.goto('https://staging.pepagora.com/', { waitUntil: 'load' });
 
   await page.getByRole('button', { name: '×' }).click();
 
